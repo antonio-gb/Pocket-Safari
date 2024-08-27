@@ -9,10 +9,6 @@ import SwiftUI
 
 @main
 struct Pocket_SafariApp: App {
-    
-    
-    
-    
     var body: some Scene {
         WindowGroup {
             ContentView()

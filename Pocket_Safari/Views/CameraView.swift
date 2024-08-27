@@ -12,7 +12,7 @@ struct CameraView: View {
     var body: some View {
         ZStack {
             Rectangle()
-                .fill(colorP.c3)
+                .fill(Color.white)
             Text("CameraView")
         }
     }

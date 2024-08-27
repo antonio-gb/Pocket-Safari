@@ -37,7 +37,7 @@ struct NavigationBarView: View {
                         ForEach (Tab.allCases, id: \.rawValue) { tab in
                             TabButton(tab: tab, dWidth: dWidth)
                         }
-                        .background(colorP.c6)
+                        .background(colorP.c3)
                         .padding(.bottom, 5)
                     }
                 }
@@ -54,7 +54,7 @@ struct NavigationBarView: View {
         } label: {
             ZStack {
                 Circle()
-                    .fill(currentTab == tab ? LinearGradient(colors: [colorP.c2, colorP.c6], startPoint: .top, endPoint: .bottom) : LinearGradient(colors: [Color.clear], startPoint: .top, endPoint: .bottom))
+                    .fill(currentTab == tab ? LinearGradient(colors: [colorP.c1, colorP.c3], startPoint: .top, endPoint: .bottom) : LinearGradient(colors: [Color.clear], startPoint: .top, endPoint: .bottom))
                     .offset(y: currentTab == tab ? -35 : 0)
                     .frame(height: dWidth / 5)
                 Image(systemName: currentTab == tab ? tab.rawValue + ".fill": tab.rawValue)
@@ -62,7 +62,7 @@ struct NavigationBarView: View {
                     .scaledToFit()
                     .frame(width: tab == Tab.Encyclopedia || tab == Tab.Achievements ? 25 : 27)
                     .frame(maxWidth: .infinity)
-                    .foregroundStyle(colorP.c1)
+                    .foregroundStyle(Color.white)
                     .contentShape(Rectangle())
                     .offset(y: currentTab == tab ? -35 : 0)
             }
