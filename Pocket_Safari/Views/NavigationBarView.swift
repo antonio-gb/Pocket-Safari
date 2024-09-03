@@ -10,6 +10,7 @@ import SwiftUI
 struct NavigationBarView: View {
     @State var currentTab: Tab = .Camera
     let colorP = ColorPalette()
+    @State private var viewModel = ViewModel()
     
     // Hide native bar
     init () {
@@ -25,7 +26,7 @@ struct NavigationBarView: View {
                 TabView(selection: $currentTab) {
                     //HomeView()
                     //.tag(Tab.Home)
-                    CameraView()
+                    CameraView(image: $viewModel.currFrame)
                         .tag(Tab.Camera)
                     AchievementView()
                         .tag(Tab.Achievements)

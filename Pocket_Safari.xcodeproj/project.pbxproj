@@ -19,6 +19,8 @@
 		0640EE292C7E76BE00995F8A /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0640EE282C7E76BE00995F8A /* CameraView.swift */; };
 		0640EE2B2C7E7A7B00995F8A /* AchievementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0640EE2A2C7E7A7B00995F8A /* AchievementView.swift */; };
 		0640EE2D2C7E7B6000995F8A /* Encyclopedia.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0640EE2C2C7E7B6000995F8A /* Encyclopedia.swift */; };
+		0683281E2C87A576001838B4 /* CameraModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0683281D2C87A576001838B4 /* CameraModel.swift */; };
+		068328202C87A932001838B4 /* CMSampleBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0683281F2C87A932001838B4 /* CMSampleBuffer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +56,9 @@
 		0640EE282C7E76BE00995F8A /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		0640EE2A2C7E7A7B00995F8A /* AchievementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementView.swift; sourceTree = "<group>"; };
 		0640EE2C2C7E7B6000995F8A /* Encyclopedia.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Encyclopedia.swift; sourceTree = "<group>"; };
+		068328182C87A4A3001838B4 /* Pocket_Safari.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Pocket_Safari.entitlements; sourceTree = "<group>"; };
+		0683281D2C87A576001838B4 /* CameraModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraModel.swift; sourceTree = "<group>"; };
+		0683281F2C87A932001838B4 /* CMSampleBuffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CMSampleBuffer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,7 +109,8 @@
 		0640EDF62C7E704B00995F8A /* Pocket_Safari */ = {
 			isa = PBXGroup;
 			children = (
-				0640EE232C7E73D500995F8A /* Helpers */,
+				0683281C2C87A54A001838B4 /* Helpers */,
+				068328182C87A4A3001838B4 /* Pocket_Safari.entitlements */,
 				0640EE222C7E73CA00995F8A /* Views */,
 				0640EE212C7E73BE00995F8A /* Model */,
 				0640EDFB2C7E704B00995F8A /* Assets.xcassets */,
@@ -141,6 +147,8 @@
 		0640EE212C7E73BE00995F8A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				0683281F2C87A932001838B4 /* CMSampleBuffer.swift */,
+				0683281D2C87A576001838B4 /* CameraModel.swift */,
 				0640EE262C7E751F00995F8A /* ColorPalette.swift */,
 			);
 			path = Model;
@@ -159,12 +167,12 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		0640EE232C7E73D500995F8A /* Helpers */ = {
+		0683281C2C87A54A001838B4 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			path = Helpers;
-			sourceTree = SOURCE_ROOT;
+			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
@@ -297,11 +305,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				0640EDFA2C7E704B00995F8A /* ContentView.swift in Sources */,
+				068328202C87A932001838B4 /* CMSampleBuffer.swift in Sources */,
 				0640EDF82C7E704B00995F8A /* Pocket_SafariApp.swift in Sources */,
 				0640EE2D2C7E7B6000995F8A /* Encyclopedia.swift in Sources */,
 				0640EE252C7E74D500995F8A /* NavigationBarView.swift in Sources */,
 				0640EE292C7E76BE00995F8A /* CameraView.swift in Sources */,
 				0640EE2B2C7E7A7B00995F8A /* AchievementView.swift in Sources */,
+				0683281E2C87A576001838B4 /* CameraModel.swift in Sources */,
 				0640EE272C7E751F00995F8A /* ColorPalette.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -463,11 +473,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Pocket_Safari/Pocket_Safari.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Pocket_Safari/Preview Content\"";
+				DEVELOPMENT_TEAM = 68W72M6366;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Using camera yes or no?";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -480,6 +493,8 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "UDLAP.Pocket-Safari";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -491,11 +506,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Pocket_Safari/Pocket_Safari.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Pocket_Safari/Preview Content\"";
+				DEVELOPMENT_TEAM = 68W72M6366;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Using camera yes or no?";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -508,6 +526,8 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "UDLAP.Pocket-Safari";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
