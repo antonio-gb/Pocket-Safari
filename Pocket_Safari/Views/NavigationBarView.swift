@@ -26,7 +26,7 @@ struct NavigationBarView: View {
                 TabView(selection: $currentTab) {
                     //HomeView()
                     //.tag(Tab.Home)
-                    CameraView(image: $viewModel.currFrame)
+                    CameraView()
                         .tag(Tab.Camera)
                     AchievementView()
                         .tag(Tab.Achievements)

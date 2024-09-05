@@ -21,6 +21,9 @@
 		0640EE2D2C7E7B6000995F8A /* Encyclopedia.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0640EE2C2C7E7B6000995F8A /* Encyclopedia.swift */; };
 		0683281E2C87A576001838B4 /* CameraModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0683281D2C87A576001838B4 /* CameraModel.swift */; };
 		068328202C87A932001838B4 /* CMSampleBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0683281F2C87A932001838B4 /* CMSampleBuffer.swift */; };
+		068328282C8A58D7001838B4 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 068328272C8A58D7001838B4 /* DataModel.swift */; };
+		0683282B2C8A5B51001838B4 /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0683282A2C8A5B51001838B4 /* Camera.swift */; };
+		0683282D2C8A5CE8001838B4 /* ViewfinderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0683282C2C8A5CE8001838B4 /* ViewfinderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,13 +55,16 @@
 		0640EE122C7E704C00995F8A /* Pocket_SafariUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pocket_SafariUITests.swift; sourceTree = "<group>"; };
 		0640EE142C7E704C00995F8A /* Pocket_SafariUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pocket_SafariUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		0640EE242C7E74D500995F8A /* NavigationBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarView.swift; sourceTree = "<group>"; };
-		0640EE262C7E751F00995F8A /* ColorPalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ColorPalette.swift; path = Pocket_Safari/Views/ColorPalette.swift; sourceTree = SOURCE_ROOT; };
+		0640EE262C7E751F00995F8A /* ColorPalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ColorPalette.swift; path = Pocket_Safari/Helpers/ColorPalette.swift; sourceTree = SOURCE_ROOT; };
 		0640EE282C7E76BE00995F8A /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		0640EE2A2C7E7A7B00995F8A /* AchievementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementView.swift; sourceTree = "<group>"; };
 		0640EE2C2C7E7B6000995F8A /* Encyclopedia.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Encyclopedia.swift; sourceTree = "<group>"; };
 		068328182C87A4A3001838B4 /* Pocket_Safari.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Pocket_Safari.entitlements; sourceTree = "<group>"; };
 		0683281D2C87A576001838B4 /* CameraModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraModel.swift; sourceTree = "<group>"; };
 		0683281F2C87A932001838B4 /* CMSampleBuffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CMSampleBuffer.swift; sourceTree = "<group>"; };
+		068328272C8A58D7001838B4 /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
+		0683282A2C8A5B51001838B4 /* Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Camera.swift; path = ../../Camera.swift; sourceTree = "<group>"; };
+		0683282C2C8A5CE8001838B4 /* ViewfinderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewfinderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,8 +154,9 @@
 			isa = PBXGroup;
 			children = (
 				0683281F2C87A932001838B4 /* CMSampleBuffer.swift */,
+				068328272C8A58D7001838B4 /* DataModel.swift */,
+				0683282A2C8A5B51001838B4 /* Camera.swift */,
 				0683281D2C87A576001838B4 /* CameraModel.swift */,
-				0640EE262C7E751F00995F8A /* ColorPalette.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -162,6 +169,7 @@
 				0640EE242C7E74D500995F8A /* NavigationBarView.swift */,
 				0640EE2C2C7E7B6000995F8A /* Encyclopedia.swift */,
 				0640EE282C7E76BE00995F8A /* CameraView.swift */,
+				0683282C2C8A5CE8001838B4 /* ViewfinderView.swift */,
 				0640EE2A2C7E7A7B00995F8A /* AchievementView.swift */,
 			);
 			path = Views;
@@ -170,6 +178,7 @@
 		0683281C2C87A54A001838B4 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				0640EE262C7E751F00995F8A /* ColorPalette.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -304,11 +313,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0683282B2C8A5B51001838B4 /* Camera.swift in Sources */,
 				0640EDFA2C7E704B00995F8A /* ContentView.swift in Sources */,
+				0683282D2C8A5CE8001838B4 /* ViewfinderView.swift in Sources */,
 				068328202C87A932001838B4 /* CMSampleBuffer.swift in Sources */,
 				0640EDF82C7E704B00995F8A /* Pocket_SafariApp.swift in Sources */,
 				0640EE2D2C7E7B6000995F8A /* Encyclopedia.swift in Sources */,
 				0640EE252C7E74D500995F8A /* NavigationBarView.swift in Sources */,
+				068328282C8A58D7001838B4 /* DataModel.swift in Sources */,
 				0640EE292C7E76BE00995F8A /* CameraView.swift in Sources */,
 				0640EE2B2C7E7A7B00995F8A /* AchievementView.swift in Sources */,
 				0683281E2C87A576001838B4 /* CameraModel.swift in Sources */,

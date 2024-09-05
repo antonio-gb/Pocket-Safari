@@ -12,6 +12,7 @@ class CameraModel: NSObject {
     private let systemCamera = AVCaptureDevice.default(for: .video)
     private let sessionQueue = DispatchQueue(label: "video.preview.session")
     private var addStream: ((CGImage) -> Void)?
+
     
     private var isAuthorized: Bool {
         get async {
