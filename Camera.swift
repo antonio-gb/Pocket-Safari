@@ -300,6 +300,8 @@ class Camera: NSObject {
         guard let photoOutput = self.photoOutput else { return }
         
         sessionQueue.async {
+            
+            
         
             var photoSettings = AVCapturePhotoSettings()
 
@@ -326,7 +328,6 @@ class Camera: NSObject {
         }
     }
 }
-
 extension Camera: AVCapturePhotoCaptureDelegate {
     
     func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
@@ -336,7 +337,18 @@ extension Camera: AVCapturePhotoCaptureDelegate {
             return
         }
         
-        addToPhotoStream?(photo)
+        // Convert the captured photo to a UIImage
+        if let imageData = photo.fileDataRepresentation(),
+           let image = UIImage(data: imageData) {
+            
+            // Save the photo to the gallery
+            UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+            
+            // Continue with your existing photo stream logic
+            addToPhotoStream?(photo)
+        } else {
+            logger.error("Error converting photo to UIImage.")
+        }
     }
 }
 

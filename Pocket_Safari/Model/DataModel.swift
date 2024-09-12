@@ -6,7 +6,6 @@ import os.log
 
 final class DataModel: ObservableObject {
     let camera = Camera()
-    
     @Published var viewfinderImage: Image?
     @Published var thumbnailImage: Image?
     

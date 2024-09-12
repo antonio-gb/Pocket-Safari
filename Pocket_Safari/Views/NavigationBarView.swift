@@ -27,6 +27,7 @@ struct NavigationBarView: View {
                     //HomeView()
                     //.tag(Tab.Home)
                     CameraView()
+                        .frame(height: 500)
                         .tag(Tab.Camera)
                     AchievementView()
                         .tag(Tab.Achievements)
@@ -81,6 +82,9 @@ extension UINavigationController: UIGestureRecognizerDelegate {
         return viewControllers.count > 1
     }
 }
+
+
+
 
 // Tabbar enum
 enum Tab: String, CaseIterable {

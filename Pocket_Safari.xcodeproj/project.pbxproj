@@ -24,6 +24,8 @@
 		068328282C8A58D7001838B4 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 068328272C8A58D7001838B4 /* DataModel.swift */; };
 		0683282B2C8A5B51001838B4 /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0683282A2C8A5B51001838B4 /* Camera.swift */; };
 		0683282D2C8A5CE8001838B4 /* ViewfinderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0683282C2C8A5CE8001838B4 /* ViewfinderView.swift */; };
+		06E8FE422C9387A4005C26E8 /* PhotoCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E8FE412C9387A4005C26E8 /* PhotoCollection.swift */; };
+		06E8FE442C9389CD005C26E8 /* PhotoAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E8FE432C9389CD005C26E8 /* PhotoAsset.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +67,8 @@
 		068328272C8A58D7001838B4 /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 		0683282A2C8A5B51001838B4 /* Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Camera.swift; path = ../../Camera.swift; sourceTree = "<group>"; };
 		0683282C2C8A5CE8001838B4 /* ViewfinderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewfinderView.swift; sourceTree = "<group>"; };
+		06E8FE412C9387A4005C26E8 /* PhotoCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollection.swift; sourceTree = "<group>"; };
+		06E8FE432C9389CD005C26E8 /* PhotoAsset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAsset.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +159,8 @@
 			children = (
 				0683281F2C87A932001838B4 /* CMSampleBuffer.swift */,
 				068328272C8A58D7001838B4 /* DataModel.swift */,
+				06E8FE412C9387A4005C26E8 /* PhotoCollection.swift */,
+				06E8FE432C9389CD005C26E8 /* PhotoAsset.swift */,
 				0683282A2C8A5B51001838B4 /* Camera.swift */,
 				0683281D2C87A576001838B4 /* CameraModel.swift */,
 			);
@@ -315,10 +321,12 @@
 			files = (
 				0683282B2C8A5B51001838B4 /* Camera.swift in Sources */,
 				0640EDFA2C7E704B00995F8A /* ContentView.swift in Sources */,
+				06E8FE422C9387A4005C26E8 /* PhotoCollection.swift in Sources */,
 				0683282D2C8A5CE8001838B4 /* ViewfinderView.swift in Sources */,
 				068328202C87A932001838B4 /* CMSampleBuffer.swift in Sources */,
 				0640EDF82C7E704B00995F8A /* Pocket_SafariApp.swift in Sources */,
 				0640EE2D2C7E7B6000995F8A /* Encyclopedia.swift in Sources */,
+				06E8FE442C9389CD005C26E8 /* PhotoAsset.swift in Sources */,
 				0640EE252C7E74D500995F8A /* NavigationBarView.swift in Sources */,
 				068328282C8A58D7001838B4 /* DataModel.swift in Sources */,
 				0640EE292C7E76BE00995F8A /* CameraView.swift in Sources */,
@@ -493,6 +501,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Using camera yes or no?";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "using album";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -526,6 +535,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Using camera yes or no?";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "using album";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
