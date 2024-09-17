@@ -15,13 +15,19 @@
 		0640EE132C7E704C00995F8A /* Pocket_SafariUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0640EE122C7E704C00995F8A /* Pocket_SafariUITests.swift */; };
 		0640EE152C7E704C00995F8A /* Pocket_SafariUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0640EE142C7E704C00995F8A /* Pocket_SafariUITestsLaunchTests.swift */; };
 		0640EE252C7E74D500995F8A /* NavigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0640EE242C7E74D500995F8A /* NavigationBarView.swift */; };
-		0640EE272C7E751F00995F8A /* ColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0640EE262C7E751F00995F8A /* ColorPalette.swift */; };
 		0640EE292C7E76BE00995F8A /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0640EE282C7E76BE00995F8A /* CameraView.swift */; };
 		0640EE2B2C7E7A7B00995F8A /* AchievementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0640EE2A2C7E7A7B00995F8A /* AchievementView.swift */; };
 		0640EE2D2C7E7B6000995F8A /* Encyclopedia.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0640EE2C2C7E7B6000995F8A /* Encyclopedia.swift */; };
-		06777B662C99DE8200202853 /* achievments.txt in Resources */ = {isa = PBXBuildFile; fileRef = 06777B652C99DE8200202853 /* achievments.txt */; };
-		06777B672C99DE8200202853 /* achievments.txt in Resources */ = {isa = PBXBuildFile; fileRef = 06777B652C99DE8200202853 /* achievments.txt */; };
-		06777B682C99DE8200202853 /* achievments.txt in Resources */ = {isa = PBXBuildFile; fileRef = 06777B652C99DE8200202853 /* achievments.txt */; };
+		06E8FE462C9A247E005C26E8 /* ColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E8FE452C9A247E005C26E8 /* ColorPalette.swift */; };
+		06E8FE472C9A2480005C26E8 /* ColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E8FE452C9A247E005C26E8 /* ColorPalette.swift */; };
+		06E8FE482C9A2480005C26E8 /* ColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E8FE452C9A247E005C26E8 /* ColorPalette.swift */; };
+		06E8FE4A2C9A24B9005C26E8 /* achievments.txt in Resources */ = {isa = PBXBuildFile; fileRef = 06E8FE492C9A24B9005C26E8 /* achievments.txt */; };
+		06E8FE522C9A2632005C26E8 /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E8FE4B2C9A2632005C26E8 /* Camera.swift */; };
+		06E8FE532C9A2632005C26E8 /* CameraModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E8FE4C2C9A2632005C26E8 /* CameraModel.swift */; };
+		06E8FE542C9A2632005C26E8 /* CMSampleBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E8FE4D2C9A2632005C26E8 /* CMSampleBuffer.swift */; };
+		06E8FE552C9A2632005C26E8 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E8FE4E2C9A2632005C26E8 /* DataModel.swift */; };
+		06E8FE562C9A2632005C26E8 /* PhotoAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E8FE4F2C9A2632005C26E8 /* PhotoAsset.swift */; };
+		06E8FE572C9A2632005C26E8 /* PhotoCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E8FE502C9A2632005C26E8 /* PhotoCollection.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,11 +59,17 @@
 		0640EE122C7E704C00995F8A /* Pocket_SafariUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pocket_SafariUITests.swift; sourceTree = "<group>"; };
 		0640EE142C7E704C00995F8A /* Pocket_SafariUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pocket_SafariUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		0640EE242C7E74D500995F8A /* NavigationBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarView.swift; sourceTree = "<group>"; };
-		0640EE262C7E751F00995F8A /* ColorPalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ColorPalette.swift; path = Pocket_Safari/Views/ColorPalette.swift; sourceTree = SOURCE_ROOT; };
 		0640EE282C7E76BE00995F8A /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		0640EE2A2C7E7A7B00995F8A /* AchievementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementView.swift; sourceTree = "<group>"; };
 		0640EE2C2C7E7B6000995F8A /* Encyclopedia.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Encyclopedia.swift; sourceTree = "<group>"; };
-		06777B652C99DE8200202853 /* achievments.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = achievments.txt; sourceTree = SOURCE_ROOT; };
+		06E8FE452C9A247E005C26E8 /* ColorPalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPalette.swift; sourceTree = "<group>"; };
+		06E8FE492C9A24B9005C26E8 /* achievments.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = achievments.txt; sourceTree = "<group>"; };
+		06E8FE4B2C9A2632005C26E8 /* Camera.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
+		06E8FE4C2C9A2632005C26E8 /* CameraModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraModel.swift; sourceTree = "<group>"; };
+		06E8FE4D2C9A2632005C26E8 /* CMSampleBuffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CMSampleBuffer.swift; sourceTree = "<group>"; };
+		06E8FE4E2C9A2632005C26E8 /* DataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
+		06E8FE4F2C9A2632005C26E8 /* PhotoAsset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoAsset.swift; sourceTree = "<group>"; };
+		06E8FE502C9A2632005C26E8 /* PhotoCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCollection.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,7 +122,6 @@
 			children = (
 				0640EE232C7E73D500995F8A /* Helpers */,
 				0640EE222C7E73CA00995F8A /* Views */,
-				0640EE212C7E73BE00995F8A /* Model */,
 				0640EDFB2C7E704B00995F8A /* Assets.xcassets */,
 				0640EDFD2C7E704B00995F8A /* Preview Content */,
 			);
@@ -142,14 +153,6 @@
 			path = Pocket_SafariUITests;
 			sourceTree = "<group>";
 		};
-		0640EE212C7E73BE00995F8A /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				0640EE262C7E751F00995F8A /* ColorPalette.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		0640EE222C7E73CA00995F8A /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -159,6 +162,7 @@
 				0640EE2C2C7E7B6000995F8A /* Encyclopedia.swift */,
 				0640EE282C7E76BE00995F8A /* CameraView.swift */,
 				0640EE2A2C7E7A7B00995F8A /* AchievementView.swift */,
+				06E8FE512C9A2632005C26E8 /* Model */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -166,9 +170,23 @@
 		0640EE232C7E73D500995F8A /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				06777B652C99DE8200202853 /* achievments.txt */,
+				06E8FE492C9A24B9005C26E8 /* achievments.txt */,
+				06E8FE452C9A247E005C26E8 /* ColorPalette.swift */,
 			);
 			path = Helpers;
+			sourceTree = SOURCE_ROOT;
+		};
+		06E8FE512C9A2632005C26E8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				06E8FE4B2C9A2632005C26E8 /* Camera.swift */,
+				06E8FE4C2C9A2632005C26E8 /* CameraModel.swift */,
+				06E8FE4D2C9A2632005C26E8 /* CMSampleBuffer.swift */,
+				06E8FE4E2C9A2632005C26E8 /* DataModel.swift */,
+				06E8FE4F2C9A2632005C26E8 /* PhotoAsset.swift */,
+				06E8FE502C9A2632005C26E8 /* PhotoCollection.swift */,
+			);
+			path = Model;
 			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
@@ -277,7 +295,7 @@
 			files = (
 				0640EDFF2C7E704B00995F8A /* Preview Assets.xcassets in Resources */,
 				0640EDFC2C7E704B00995F8A /* Assets.xcassets in Resources */,
-				06777B662C99DE8200202853 /* achievments.txt in Resources */,
+				06E8FE4A2C9A24B9005C26E8 /* achievments.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -285,7 +303,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				06777B672C99DE8200202853 /* achievments.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -293,7 +310,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				06777B682C99DE8200202853 /* achievments.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -304,13 +320,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				06E8FE522C9A2632005C26E8 /* Camera.swift in Sources */,
+				06E8FE462C9A247E005C26E8 /* ColorPalette.swift in Sources */,
+				06E8FE572C9A2632005C26E8 /* PhotoCollection.swift in Sources */,
+				06E8FE552C9A2632005C26E8 /* DataModel.swift in Sources */,
 				0640EDFA2C7E704B00995F8A /* ContentView.swift in Sources */,
+				06E8FE542C9A2632005C26E8 /* CMSampleBuffer.swift in Sources */,
 				0640EDF82C7E704B00995F8A /* Pocket_SafariApp.swift in Sources */,
 				0640EE2D2C7E7B6000995F8A /* Encyclopedia.swift in Sources */,
 				0640EE252C7E74D500995F8A /* NavigationBarView.swift in Sources */,
 				0640EE292C7E76BE00995F8A /* CameraView.swift in Sources */,
+				06E8FE562C9A2632005C26E8 /* PhotoAsset.swift in Sources */,
 				0640EE2B2C7E7A7B00995F8A /* AchievementView.swift in Sources */,
-				0640EE272C7E751F00995F8A /* ColorPalette.swift in Sources */,
+				06E8FE532C9A2632005C26E8 /* CameraModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -319,6 +341,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0640EE092C7E704C00995F8A /* Pocket_SafariTests.swift in Sources */,
+				06E8FE482C9A2480005C26E8 /* ColorPalette.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -328,6 +351,7 @@
 			files = (
 				0640EE152C7E704C00995F8A /* Pocket_SafariUITestsLaunchTests.swift in Sources */,
 				0640EE132C7E704C00995F8A /* Pocket_SafariUITests.swift in Sources */,
+				06E8FE472C9A2480005C26E8 /* ColorPalette.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
