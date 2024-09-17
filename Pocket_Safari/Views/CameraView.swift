@@ -50,8 +50,6 @@ struct CameraView: View {
         HStack(spacing: 60) {
             
             Spacer()
-            
-            
             Button {
                 model.camera.takePhoto()
             } label: {

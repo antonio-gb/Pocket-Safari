@@ -83,9 +83,6 @@ extension UINavigationController: UIGestureRecognizerDelegate {
     }
 }
 
-
-
-
 // Tabbar enum
 enum Tab: String, CaseIterable {
     //case Home = "house"
