@@ -10,6 +10,7 @@ import SwiftUI
 struct NavigationBarView: View {
     @State var currentTab: Tab = .Camera
     let colorP = ColorPalette()
+    @State private var viewModel = ViewModel()
     
     // Hide native bar
     init () {
@@ -26,6 +27,7 @@ struct NavigationBarView: View {
                     //HomeView()
                     //.tag(Tab.Home)
                     CameraView()
+                        .frame(height: 500)
                         .tag(Tab.Camera)
                     AchievementView()
                         .tag(Tab.Achievements)
@@ -37,7 +39,7 @@ struct NavigationBarView: View {
                         ForEach (Tab.allCases, id: \.rawValue) { tab in
                             TabButton(tab: tab, dWidth: dWidth)
                         }
-                        .background(colorP.c3)
+                        .background(colorP.pocketDarkGreen)
                         .padding(.bottom, 5)
                     }
                 }
@@ -54,7 +56,7 @@ struct NavigationBarView: View {
         } label: {
             ZStack {
                 Circle()
-                    .fill(currentTab == tab ? LinearGradient(colors: [colorP.c1, colorP.c3], startPoint: .top, endPoint: .bottom) : LinearGradient(colors: [Color.clear], startPoint: .top, endPoint: .bottom))
+                    .fill(currentTab == tab ? LinearGradient(colors: [colorP.pocketBlack, colorP.pocketShadeGreen], startPoint: .top, endPoint: .bottom) : LinearGradient(colors: [Color.clear], startPoint: .top, endPoint: .bottom))
                     .offset(y: currentTab == tab ? -35 : 0)
                     .frame(height: dWidth / 5)
                 Image(systemName: currentTab == tab ? tab.rawValue + ".fill": tab.rawValue)
