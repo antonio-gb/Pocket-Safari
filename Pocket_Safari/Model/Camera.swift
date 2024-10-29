@@ -395,4 +395,3 @@ fileprivate extension UIScreen {
 }
 
 fileprivate let logger = Logger(subsystem: "com.apple.swiftplaygroundscontent.capturingphotos", category: "Camera")
-
