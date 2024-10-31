@@ -1,8 +1,7 @@
-
-
 import AVFoundation
 import SwiftUI
 import os.log
+import CoreML
 
 final class DataModel: ObservableObject {
     let camera = Camera()
@@ -10,7 +9,6 @@ final class DataModel: ObservableObject {
     @Published var thumbnailImage: Image?
     @Published var lastCapturedImage: Image?
 
-    
     var isPhotosLoaded = false
     
     init() {
@@ -35,25 +33,26 @@ final class DataModel: ObservableObject {
     }
     
     func handleCameraPhotos() async {
-           let unpackedPhotoStream = camera.photoStream.compactMap { self.unpackPhoto($0) }
-           
-           for await photoData in unpackedPhotoStream {
-               Task { @MainActor in
-                   // Create Image directly from the Data
-                   if let uiImage = UIImage(data: photoData.imageData) {
-                       lastCapturedImage = Image(uiImage: uiImage.fixOrientation())
-                   }
-                   viewfinderImage = photoData.thumbnailImage
-               }
-           }
-       }
+        let unpackedPhotoStream = camera.photoStream.compactMap { self.unpackPhoto($0) }
+        
+        for await photoData in unpackedPhotoStream {
+            Task { @MainActor in
+                // Create Image directly from the Data
+                if let uiImage = UIImage(data: photoData.imageData) {
+                    lastCapturedImage = Image(uiImage: uiImage.fixOrientation())
+                }
+                viewfinderImage = photoData.thumbnailImage
+            }
+        }
+    }
     
     private func unpackPhoto(_ photo: AVCapturePhoto) -> PhotoData? {
         guard let imageData = photo.fileDataRepresentation() else { return nil }
-
+        
         guard let previewCGImage = photo.previewCGImageRepresentation(),
-           let metadataOrientation = photo.metadata[String(kCGImagePropertyOrientation)] as? UInt32,
+              let metadataOrientation = photo.metadata[String(kCGImagePropertyOrientation)] as? UInt32,
               let cgImageOrientation = CGImagePropertyOrientation(rawValue: metadataOrientation) else { return nil }
+        
         let imageOrientation = Image.Orientation(cgImageOrientation)
         let thumbnailImage = Image(decorative: previewCGImage, scale: 1, orientation: imageOrientation)
         
@@ -64,9 +63,6 @@ final class DataModel: ObservableObject {
         
         return PhotoData(thumbnailImage: thumbnailImage, thumbnailSize: thumbnailSize, imageData: imageData, imageSize: imageSize)
     }
-    
-    
-    
 }
 
 fileprivate struct PhotoData {
@@ -85,7 +81,6 @@ fileprivate extension CIImage {
 }
 
 fileprivate extension Image.Orientation {
-
     init(_ cgImageOrientation: CGImagePropertyOrientation) {
         switch cgImageOrientation {
         case .up: self = .up
@@ -96,6 +91,7 @@ fileprivate extension Image.Orientation {
         case .leftMirrored: self = .leftMirrored
         case .right: self = .right
         case .rightMirrored: self = .rightMirrored
+        @unknown default: self = .up  // Handle unknown orientations gracefully
         }
     }
 }
@@ -104,16 +100,6 @@ extension UIImage {
     func fixOrientation() -> UIImage {
         if imageOrientation == .up { return self }
 
-        UIGraphicsBeginImageContext(size)
-        draw(in: CGRect(origin: .zero, size: size))
-        let normalizedImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-
-        return normalizedImage ?? self
-    }
-}
-
-fileprivate let logger = Logger(subsystem: "com.apple.swiftplaygroundscontent.capturingphotos", category: "DataModel")
         UIGraphicsBeginImageContext(size)
         draw(in: CGRect(origin: .zero, size: size))
         let normalizedImage = UIGraphicsGetImageFromCurrentImageContext()

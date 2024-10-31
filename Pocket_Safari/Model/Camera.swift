@@ -9,6 +9,7 @@ import AVFoundation
 import CoreImage
 import UIKit
 import os.log
+import CoreML
 
 class Camera: NSObject {
     private let captureSession = AVCaptureSession()
@@ -300,14 +301,15 @@ class Camera: NSObject {
         }
     }
 
-    func takePhoto(completion : @escaping (Bool) -> Void) {
+    func takePhoto(completion: @escaping (Bool) -> Void) {
         self.photoCompletion = completion  // Store the completion handler
-            guard let photoOutput = self.photoOutput else {
-                completion(false)  // Call completion with failure
-                return
+        
+        guard let photoOutput = self.photoOutput else {
+            completion(false)  // Call completion with failure
+            return
         }
+        
         sessionQueue.async {
-
             var photoSettings = AVCapturePhotoSettings()
 
             if photoOutput.availablePhotoCodecTypes.contains(.hevc) {
@@ -324,7 +326,7 @@ class Camera: NSObject {
 
             if let photoOutputVideoConnection = photoOutput.connection(with: .video) {
                 if photoOutputVideoConnection.isVideoOrientationSupported,
-                    let videoOrientation = self.videoOrientationFor(self.deviceOrientation) {
+                   let videoOrientation = self.videoOrientationFor(self.deviceOrientation) {
                     photoOutputVideoConnection.videoOrientation = videoOrientation
                 }
             }
@@ -332,10 +334,12 @@ class Camera: NSObject {
             photoOutput.capturePhoto(with: photoSettings, delegate: self)
         }
     }
+    
+    
+
 }
 
 extension Camera: AVCapturePhotoCaptureDelegate {
-
     func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
         if let error = error {
             logger.error("Error capturing photo: \(error.localizedDescription)")
@@ -345,8 +349,19 @@ extension Camera: AVCapturePhotoCaptureDelegate {
 
         if let imageData = photo.fileDataRepresentation(),
            let image = UIImage(data: imageData) {
+
             // Save the photo to the gallery
             UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+
+            // Convert UIImage to CIImage
+            guard let ciImage = CIImage(image: image) else {
+                logger.error("Error converting UIImage to CIImage.")
+                photoCompletion?(false)
+                return
+            }
+
+            // Make a prediction using the model
+            self.makePrediction(with: ciImage)
 
             // Continue with your existing photo stream logic
             addToPhotoStream?(photo)
@@ -360,7 +375,154 @@ extension Camera: AVCapturePhotoCaptureDelegate {
         photoCompletion = nil  // Clear the completion handler
     }
 
+    private func makePrediction(with ciImage: CIImage) {
+        // Load your model
+        guard let model = try? PocketSafariML1(configuration: MLModelConfiguration()) else {
+            logger.error("Failed to load model.")
+            return
         }
+
+        // Prepare the image for prediction
+        let resizedImage = ciImage.resize(to: CGSize(width: 224, height: 224)) // Adjust size if needed
+        guard let pixelBuffer = resizedImage.pixelBuffer() else {
+            logger.error("Error converting CIImage to CVPixelBuffer.")
+            return
+        }
+
+        // Make the prediction
+        do {
+            let prediction = try model.prediction(image: pixelBuffer)
+            let resultString = prediction.target // Adjust based on your model's output
+            logger.debug("Prediction result: \(resultString)")
+            // Handle the result (e.g., update the UI, store the result, etc.)
+        } catch {
+            logger.error("Error making prediction: \(error.localizedDescription)")
+        }
+    }
+}
+
+extension UIImage {
+    func resized(to targetSize: CGSize) -> UIImage? {
+        let size = self.size
+        
+        let widthRatio  = targetSize.width  / size.width
+        let heightRatio = targetSize.height / size.height
+        
+        // Determine what ratio to use to ensure the image is the size we want
+        let ratio = min(widthRatio, heightRatio)
+        
+        // Create a new size using the ratio
+        let newSize = CGSize(width: size.width * ratio, height: size.height * ratio)
+        
+        // Perform the resizing
+        UIGraphicsBeginImageContextWithOptions(newSize, false, 1.0)
+        self.draw(in: CGRect(origin: .zero, size: newSize))
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return newImage
+    }
+}
+
+import CoreImage
+import UIKit
+
+extension CIImage {
+    func resize(to targetSize: CGSize) -> CIImage {
+        let scaleX = targetSize.width / extent.size.width
+        let scaleY = targetSize.height / extent.size.height
+        let scale = min(scaleX, scaleY)
+
+        let newWidth = extent.size.width * scale
+        let newHeight = extent.size.height * scale
+
+        // Create a transformation for resizing
+        let transform = CGAffineTransform(scaleX: scale, y: scale)
+        
+        return self.transformed(by: transform).cropped(to: CGRect(x: 0, y: 0, width: newWidth, height: newHeight))
+    }
+}
+
+import CoreVideo
+
+extension CIImage {
+    func pixelBuffer() -> CVPixelBuffer? {
+        let attrs = [
+            kCVPixelBufferCGImageCompatibilityKey: kCFBooleanTrue!,
+            kCVPixelBufferCGBitmapContextCompatibilityKey: kCFBooleanTrue!
+        ] as CFDictionary
+
+        var pixelBuffer: CVPixelBuffer?
+        let status = CVPixelBufferCreate(kCFAllocatorDefault,
+                                          Int(extent.size.width),
+                                          Int(extent.size.height),
+                                          kCVPixelFormatType_32ARGB,
+                                          attrs,
+                                          &pixelBuffer)
+
+        guard status == kCVReturnSuccess, let buffer = pixelBuffer else {
+            return nil
+        }
+
+        CVPixelBufferLockBaseAddress(buffer, [])
+        let context = CGContext(data: CVPixelBufferGetBaseAddress(buffer),
+                                width: Int(extent.size.width),
+                                height: Int(extent.size.height),
+                                bitsPerComponent: 8,
+                                bytesPerRow: CVPixelBufferGetBytesPerRow(buffer),
+                                space: CGColorSpaceCreateDeviceRGB(),
+                                bitmapInfo: CGImageAlphaInfo.premultipliedFirst.rawValue)
+
+        context?.draw(self.cgImage!, in: CGRect(x: 0, y: 0, width: extent.size.width, height: extent.size.height))
+
+        CVPixelBufferUnlockBaseAddress(buffer, [])
+
+        return buffer
+    }
+}
+
+
+
+extension UIImage {
+    func toCVPixelBuffer() -> CVPixelBuffer? {
+        let attrs = [
+            kCVPixelBufferCGImageCompatibilityKey: kCFBooleanTrue!,
+            kCVPixelBufferCGBitmapContextCompatibilityKey: kCFBooleanTrue!
+        ] as CFDictionary
+        
+        var pixelBuffer: CVPixelBuffer?
+        let status = CVPixelBufferCreate(kCFAllocatorDefault,
+                                          Int(size.width),
+                                          Int(size.height),
+                                          kCVPixelFormatType_32ARGB,
+                                          attrs,
+                                          &pixelBuffer)
+        
+        guard status == noErr, let unwrappedPixelBuffer = pixelBuffer else {
+            return nil
+        }
+        
+        CVPixelBufferLockBaseAddress(unwrappedPixelBuffer, [])
+        
+        let rgbColorSpace = CGColorSpaceCreateDeviceRGB()
+        guard let context = CGContext(data: CVPixelBufferGetBaseAddress(unwrappedPixelBuffer),
+                                      width: CVPixelBufferGetWidth(unwrappedPixelBuffer),
+                                      height: CVPixelBufferGetHeight(unwrappedPixelBuffer),
+                                      bitsPerComponent: 8,
+                                      bytesPerRow: CVPixelBufferGetBytesPerRow(unwrappedPixelBuffer),
+                                      space: rgbColorSpace,
+                                      bitmapInfo: CGImageAlphaInfo.noneSkipFirst.rawValue) else {
+            return nil
+        }
+        
+        context.draw(self.cgImage!, in: CGRect(x: 0, y: 0, width: size.width, height: size.height))
+        
+        CVPixelBufferUnlockBaseAddress(unwrappedPixelBuffer, [])
+        
+        return unwrappedPixelBuffer
+    }
+}
+
 
 extension Camera: AVCaptureVideoDataOutputSampleBufferDelegate {
 
