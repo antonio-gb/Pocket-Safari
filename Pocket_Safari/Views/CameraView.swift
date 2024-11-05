@@ -3,7 +3,7 @@ import SwiftUI
 struct CameraView: View {
     @StateObject private var model = DataModel()
     @State private var navigateToPhotoView = false
-
+    
     var body: some View {
         NavigationStack {
             GeometryReader { geometry in
